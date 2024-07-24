@@ -1,19 +1,17 @@
 <main class="container mx-auto">
-  <app-carbon-footprint-form/>
-  <app-carbon-footprint-result/>
-
   <div class="block rounded-lg bg-white p-6 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
     <h5 class="mb-2 text-l font-medium leading-tight">TP 3 : niveau 1</h5>
     <ul class="mb-4 text-base">
-      <li [ngClass]="{'haute-distance' : distanceKm > 500, 'basse-distance' : distanceKm < 100}">Distance
-        : {{ distanceKm }} km
+      <li [ngClass]="{'haute-distance' : voyage.distanceKm > 500, 'basse-distance' : voyage.distanceKm < 100}">Distance
+        : {{ voyage.distanceKm }} km
       </li>
       <li [ngStyle]="{color : calculateConsoColor()}">
-        Consommation pour 100km : {{ consommationPour100Km | number : '1.0-2' }}
-        <span *ngIf="consommationPour100Km > 7" class="font-bold">Attention, votre consommation est élévée</span>
-        <span *ngIf="consommationPour100Km < 4" class="font-bold">Félicitations, votre consommation est faible</span>
+        Consommation pour 100km : {{ voyage.consommationPour100Km | number : '1.0-2' }}
+        <span *ngIf="voyage.consommationPour100Km > 7" class="font-bold">Attention, votre consommation est élévée</span>
+        <span *ngIf="voyage.consommationPour100Km < 4"
+              class="font-bold">Félicitations, votre consommation est faible</span>
       </li>
-      <li>Consommation totale : {{ (distanceKm * consommationPour100Km) / 100 }}</li>
+      <li>Consommation totale : {{ (voyage.distanceKm * voyage.consommationPour100Km) / 100 }}</li>
     </ul>
     <button (click)="ajouter100()" class="btn">+100km</button>
   </div>
@@ -32,12 +30,12 @@
       </th>
       <th
         class="border-b dark:border-slate-600 font-medium p-4 pl-8 pt-0 pb-3 text-slate-400 dark:text-slate-200 text-left">
-        Consommation Totale
+        Emission de C02
       </th>
     </tr>
     </thead>
     <tbody class="bg-white dark:bg-slate-800">
-    <tr *ngFor="let voyage of voyages">
+    <tr *ngFor="let voyage of getVoyages()">
       <td
         class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ voyage.distanceKm }}
         km
@@ -47,12 +45,15 @@
         L
       </td>
       <td
-        class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ voyage.distanceKm * voyage.consommationPour100Km }}
+        class="border-b border-slate-100 dark:border-slate-700 p-4 pl-8 text-slate-500 dark:text-slate-400">{{ voyage.quantiteC02 | number : '1.0-4' }}
         L
       </td>
     </tr>
     </tbody>
     <button (click)="ajouterVoyage()" class="btn mt-3">Générer un voyage</button>
   </table>
+
+  <app-carbon-footprint-form/>
+  <app-carbon-footprint-result/>
 
 </main>
