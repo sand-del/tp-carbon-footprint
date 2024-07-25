@@ -1,5 +1,32 @@
-<form>
-  <label for="test">Test :</label>
-  <input type="text" id="test"><br>
+<form [formGroup]="formVoyage" (submit)="enregistrerVoyage()">
+  <div>
+    <label for="distance">Distance :</label>
+    <input type="number" name="distanceKm" formControlName="distanceKm" id="distance">
+    <p *ngIf="formVoyage.get('distanceKm')?.errors?.['requiered']">La distance est obligatoire</p>
+    <p *ngIf="formVoyage.get('distanceKm')?.errors?.['min']">La distance doit être supérieur à zéro</p>
+  </div>
+
+  <div>
+    <label for="typeDeTransport">Type de transport :</label>
+    <select id="typeDeTransport" name="typeDeTransport" formControlName="typeDeTransport">
+      <option value="voiture">Voiture</option>
+      <option value="train">Train</option>
+      <option value="avion">Avion</option>
+    </select>
+  </div>
+
+  <div *ngIf="formVoyage.get('typeDeTransport')?.value === 'voiture'">
+    <label for="conso">Consommation pour 100 km :</label>
+    <input type="number" name="consommationPour100Km" formControlName="consommationPour100Km" id="conso">
+    <p *ngIf="formVoyage.get('consommationPour100Km')?.errors?.['requiered']">La consommation est obligatoire</p>
+    <p *ngIf="formVoyage.get('consommationPour100Km')?.errors?.['min']">La consommation doit être supérieur à zéro</p>
+  </div>
+
+  <div>
+    <label for="date">Date :</label>
+    <input type="date" name="date" formControlName="date" id="date">
+    <p *ngIf="formVoyage.get('date')?.errors?.['requiered']">La date est obligatoire</p>
+  </div>
+
   <button class="btn" type="submit">Envoyer</button>
 </form>

@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, RouterLink} from "@angular/router";
+import {HeaderComponent} from "../header/header.component";
 
 @Component({
   selector: 'app-profile',
   standalone: true,
   imports: [
-    RouterLink
+    RouterLink,
+    HeaderComponent
   ],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css'

@@ -1,3 +1,23 @@
 <p>Bienvenue !</p>
 
-<button (click)="login()">Accéder à l'application</button>
+<div>
+  <form (ngSubmit)="login()">
+    <div>
+      <label for="pseudo">Nom d'utilisateur :</label>
+      <input type="text" name="pseudo" id="pseudo" [(ngModel)]="pseudo">
+    </div>
+
+    <div>
+      <label for="password">Mot de passe</label>
+      <input type="password" name="password" id="password"[(ngModel)]="password">
+    </div>
+
+    <p *ngFor="let msg of messages">
+      {{ msg }}
+    </p>
+
+    <button type="submit" class="btn">Se connecter</button>
+  </form>
+</div>
+
+

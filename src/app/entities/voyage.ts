@@ -1,5 +1,7 @@
 export interface Voyage {
   distanceKm : number,
   consommationPour100Km : number,
-  quantiteC02 : number
+  typeDeTransport : string;
+  quantiteC02 ?: number,
+  date : string
 }

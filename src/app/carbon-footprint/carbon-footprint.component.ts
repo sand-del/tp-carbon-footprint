@@ -54,7 +54,9 @@ export class CarbonFootprintComponent implements OnInit {
     this.carbonFootPrintComputeService.addVoyages({
         distanceKm: distance,
         consommationPour100Km: conso,
-        quantiteC02: distance * conso / 100 * 2.3
+        quantiteC02: distance * conso / 100 * 2.3,
+        date: "",
+        typeDeTransport: "voiture"
       }
     );
     this.calculateDistance();
