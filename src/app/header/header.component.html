@@ -1,4 +1,6 @@
 <header class="flex">
   <h1 class="h-1 flex-1 font-bold">{{ title }}</h1>
-  <p class="flex-2 mr-3">Bienvenue {{ nomUtilisateur }}</p>
+  <div class="flex-2 mr-3">
+    <div><a routerLink="/profile/{{nomUtilisateur}}">Mon profil</a></div>
+  </div>
 </header>

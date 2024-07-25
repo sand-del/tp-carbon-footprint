@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CarbonFootprintFormComponent} from "../carbon-footprint-form/carbon-footprint-form.component";
 import {CarbonFootprintResultComponent} from "../carbon-footprint-result/carbon-footprint-result.component";
 import {DecimalPipe, NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
-import {CarbonFootprintComputeService} from "../../services/carbon-footprint-compute.service";
+import {CarbonFootprintComputeService} from "../services/carbon-footprint-compute.service";
 import {Voyage} from "../entities/voyage";
 
 @Component({
